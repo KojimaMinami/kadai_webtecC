@@ -1,39 +1,21 @@
-const clock = () => {
-    // 現在の日時・時刻の情報を取得
-    const d = new Date();
+function clock() {
+    var now = new Date();
+    var hour = now.getHours(); // 時
+    var min = now.getMinutes(); // 分
+    var sec = now.getSeconds(); // 秒
 
-    // 年
-    let year = d.getFullYear();
-    // 月
-    let month = d.getMonth() + 1;
-    // 日
-    let date = d.getDate();
-    // 曜日
-    let dayNum = d.getDay();
-    const weekday = ["日", "月", "火", "水", "木", "金", "土"];
-    let day = weekday[dayNum];
-    // 時
-    let hour = d.getHours();
-    // 分
-    let min = d.getMinutes();
-    // 秒
-    let sec = d.getSeconds();
+    // 数値が1桁の場合、頭に0を付けて2桁で表示する指定
+    if (hour < 10) { hour = "0" + hour; }
+    if (min < 10) { min = "0" + min; }
+    if (sec < 10) { sec = "0" + sec; }
 
-    // 1桁の場合は0を足して2桁に
-    month = month < 10 ? "0" + month : month;
-    date = date < 10 ? "0" + date : date;
-    hour = hour < 10 ? "0" + hour : hour;
-    min = min < 10 ? "0" + min : min;
-    sec = sec < 10 ? "0" + sec : sec;
+    // フォーマット①
+    var clock = ' ' + hour + ': ' + min + ': ' + sec + ' ';
 
-    // 日付・時刻の文字列を作成
-    let today = `今日は${year}年${month}月${date}日(${day})です！`;
-    let time = `現在 ${hour}時${min}分${sec}秒 です！`;
+    document.getElementById('RealtimeClockArea').innerHTML = clock.toLocaleString(); // div id="clock-01"
 
-    // 文字列を出力
-    document.querySelector(".clock-date").innerText = today;
-    document.querySelector(".clock-time").innerText = time;
-};
 
-// 1秒ごとにclock関数を呼び出す
-setInterval(clock, 1000);
+    // 1000ミリ秒ごとに処理を実効
+    window.setTimeout("clock()", 1000);
+}
+window.onload = clock;
