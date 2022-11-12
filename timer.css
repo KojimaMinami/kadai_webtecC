@@ -1,12 +1,6 @@
-/* Google Fonts 読み込み */
-
-
-/* @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"); */
-
-
 /* 全体を囲うコンテナー */
 
-.container {
+body {
     width: 100%;
     height: 100vh;
     background-color: #BF6956;
@@ -19,11 +13,16 @@
 
 /* 時計の共通スタイル */
 
-.clock {
+#RealtimeClockArea {
     font-family: 'Share Tech Mono', monospace;
     color: #3F4659;
-    line-height: 1.2;
     text-align: center;
+    font-size: 45px;
+}
+
+.text {
+    color: #494597;
+    font-size: 40px;
 }
 
 
